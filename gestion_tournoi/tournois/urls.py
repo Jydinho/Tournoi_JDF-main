@@ -6,7 +6,7 @@ from rest_framework.routers import DefaultRouter
 from . import views
 
 router = DefaultRouter()
-# Le r' permet de faire une espèce de regex pour corriger les lien
+# Le r' permet de faire une espèce de regex pour corriger les liens
 router.register(r'genre', views.GenreViewSet)
 router.register(r'mode_de_jeu', views.ModeDeJeuViewSet)
 router.register(r'jeu', views.JeuViewSet)

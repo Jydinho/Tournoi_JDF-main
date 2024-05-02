@@ -21,13 +21,17 @@ class Jeu(models.Model):
     modes_de_jeux = models.ManyToManyField(ModeDeJeu)    
 
     def __str__(self):
-        for el in self.genres:
-            gn = gn + ' ' + str(el)
-        for el in self.modes_de_jeux:
-            mdj = mdj + ' ' + str(el)
-        return f"""nom : {self.nom}\n
-        genres : {gn}\n
-        modes de jeux : {mdj}\n"""
+        return f"nom : {self.nom}"
+
+    # def __str__(self):
+    #     for el in self.genres:
+    #         gn = gn + ' ' + str(el)
+    #     for el in self.modes_de_jeux:
+    #         mdj = mdj + ' ' + str(el)
+        
+    #     return f"""nom : {self.nom}\n
+    #     genres : {gn}\n
+    #     modes de jeux : {mdj}\n"""
 
 
 class TypeDeTournoi(models.Model):
@@ -45,10 +49,7 @@ class Adresse(models.Model):
     pays = models.CharField(max_length=80)
 
     def __str__(self):
-        return f"rue            : {self.rue}\n"
-    "numero        : {self.numero}\n"
-    " commune       : {self.commune}\n "
-    " code_postal   : {self.code_postal}\n pays          : {self.pays}\n"
+        return f"{self.rue}, {self.numero} - {self.commune} : {self.code_postal}, {self.pays}"
 
 
 class Club(models.Model):
@@ -76,7 +77,7 @@ class Joueur(models.Model):
     jeux = models.ManyToManyField(Jeu)
 
     def __str__(self):
-        print("La liste")
+        #print("La liste")
         return f"""nom : {self.nom}\n
         prenom : {self.prenom}\n
         pseudo : {self.pseudo}, email : {self.email}\n
@@ -102,8 +103,7 @@ class Sponsor(models.Model):
     fk_type_sponsor = models.ForeignKey(TypeSponsor, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f"nom du sponsor {self.sponsor}, le lien {self.lien}"
-
+        return f"nom du sponsor {self.nom}, le lien {self.lien}"       
 
 class Tournoi(models.Model):
     nom = models.CharField(max_length=100)

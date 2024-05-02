@@ -8,7 +8,7 @@ class GenreSerializer(serializers.HyperlinkedModelSerializer):
 
 class ModeDeJeuSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
-        model = ModeDeJeu
+        model = ModeDeJeu        
         fields = '__all__'
 
 
@@ -34,8 +34,8 @@ class JeuSerializer(serializers.ModelSerializer):
     mode_de_jeu_detail = serializers.HyperlinkedRelatedField(
         many=True,
         read_only=True,
-        view_name='mode_de_jeu-detail',
-        source="modes_de_jeux"
+        view_name='modedejeu-detail',
+        source='modes_de_jeux'
     )
     class Meta:
         model = Jeu
@@ -120,13 +120,12 @@ class SponsorSerializer(serializers.ModelSerializer):
     type_sponsor_detail = serializers.HyperlinkedRelatedField(
         many=False,
         read_only=True,
-        view_name='type_sponsor-detail',
+        view_name='typesponsor-detail',
         source='fk_type_sponsor'
     )
     class Meta:
         model = Sponsor
-        fields = ['url', 'id', 'nom', 'lien', 'contact', 'logo', 'type_sponsor_id', 
-                  'type_sponsor_detail']
+        fields = ['url', 'id', 'nom', 'lien', 'contact', 'logo', 'type_sponsor_id', 'type_sponsor_detail']
         
 
 class TournoiSerializer(serializers.ModelSerializer):
@@ -139,7 +138,7 @@ class TournoiSerializer(serializers.ModelSerializer):
     type_tournoi_detail = serializers.HyperlinkedRelatedField(
         many=True,
         read_only=True,
-        view_name='type_tournoi-detail',
+        view_name='typedetournoi-detail',
         source='types_tournois'
     )
     sponsor_id = serializers.PrimaryKeyRelatedField(
