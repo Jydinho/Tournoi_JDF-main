@@ -39,7 +39,7 @@ class JeuSerializer(serializers.ModelSerializer):
     )
     class Meta:
         model = Jeu
-        fields = ['url', 'id', 'nom', 'genre_id', 'genre_detail', 'mode_de_jeu_id', 'mode_de_jeu_detail']
+        fields = ['url', 'id', 'nom', 'genre_id', 'genre_detail', 'mode_de_jeu_id', 'mode_de_jeu_detail'],
 
 
 class TypeDeTournoiSerializer(serializers.HyperlinkedModelSerializer):
