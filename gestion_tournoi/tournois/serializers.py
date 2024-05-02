@@ -180,9 +180,10 @@ class TournoiSerializer(serializers.ModelSerializer):
     class Meta:
         model = Tournoi
         fields = ['url', 'id', 'nom', 'nom_createur', 'prenom_createur', 'email',
-                  'date_debut', 'date_fin', 'nombre_de_place', 'paf', 'jeu_id', 'jeu_detail',
-                  'adresse_id', 'adresse_detail', 'type_tournoi_id', 'type_tournoi_detail',
-                  'sponsor_id', 'sponsor_detail']
+                  'date_debut', 'date_fin', 'nombre_de_place', 'paf', 'reglement',
+                  'jeu_id', 'jeu_detail', 'adresse_id', 'adresse_detail', 
+                  'type_tournoi_id', 'type_tournoi_detail', 'sponsor_id', 
+                  'sponsor_detail']
 
 
 class RencontreSerializer(serializers.ModelSerializer):

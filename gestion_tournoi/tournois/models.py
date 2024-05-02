@@ -152,7 +152,7 @@ class Score(models.Model):
 
 class Inscription(models.Model):
     status = models.CharField(max_length=20)
-    date_inscription = models.IntegerField()
+    date_inscription = models.DateField()
     fk_joueur = models.ForeignKey(Joueur, on_delete=models.CASCADE)
     fk_tournoi = models.ForeignKey(Tournoi, on_delete=models.CASCADE)
 
