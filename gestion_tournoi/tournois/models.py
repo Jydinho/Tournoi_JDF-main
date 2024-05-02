@@ -126,9 +126,11 @@ class Tournoi(models.Model):
 
 class Rencontre(models.Model):
     fk_joueur1 = models.ForeignKey(Joueur, related_name='joueur1', on_delete=models.CASCADE)
-    resultat_un = models.IntegerField()
+    resultat_un = models.IntegerField(null='True', blank='True')
     fk_joueur2 = models.ForeignKey(Joueur, related_name='joueur2', on_delete=models.CASCADE)
-    resultat_deux = models.IntegerField()
+    resultat_deux = models.IntegerField(null='True', blank='True')
+    date_rencontre = models.DateTimeField()
+    
     fk_tournoi = models.ForeignKey(Tournoi, on_delete=models.CASCADE)
     #related_name='%(class)s_requests_created'
     def __str__(self):

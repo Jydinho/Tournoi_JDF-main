@@ -55,10 +55,14 @@ class TournoiViewSet(viewsets.ModelViewSet):
     serializer_class = TournoiSerializer
 
 
-class RencontreViewSet(viewsets.ModelViewSet):
+class RencontreViewSet(viewsets.ModelViewSet):    
+        
     queryset=Rencontre.objects.all()
     serializer_class = RencontreSerializer
 
+    def perform_update(self, serializer):
+        instance = serializer.save()
+        
 
 class ScoreViewSet(viewsets.ModelViewSet):
     queryset=Score.objects.all()
