@@ -60,10 +60,44 @@ class RencontreViewSet(viewsets.ModelViewSet):
     queryset=Rencontre.objects.all()
     serializer_class = RencontreSerializer
 
+    def perform_create(self, serializer):
+        data = serializer.save()        
+        #self.update_score(instance)
+        if data.status == 'finie':
+            self.update_score_joueur1(data)
+            self.update_score_joueur2(data)
+    
     def perform_update(self, serializer):
-        instance = serializer.save()
+        instance = serializer.save()        
+        #self.update_score(instance)
+        if instance.status == 'finie':
+            self.update_score_joueur1(instance)
+            self.update_score_joueur2(instance)
         
 
+    def update_score_joueur1(self, rencontre):
+        print("JEPASSEEEEEEEE||||||||||||||||||||||||||||||||||||||||||||||")
+        score1, _ = Score.objects.get_or_create(fk_joueur_id=rencontre.fk_joueur1.id, fk_tournoi_id=rencontre.fk_tournoi.id)
+        score1.partie_jouees+=1            
+        if rencontre.resultat_un > rencontre.resultat_deux:
+            score1.victoires+=1                                  
+        elif rencontre.resultat_un < rencontre.resultat_deux:
+            score1.defaites+=1                                
+        else:
+            score1.egalites+=1                                
+        score1.save()
+            
+    def update_score_joueur2(self, rencontre):     
+        score2, _ = Score.objects.get_or_create(fk_joueur_id=rencontre.fk_joueur2.id, fk_tournoi_id=rencontre.fk_tournoi.id) 
+        score2.partie_jouees+=1
+        if rencontre.resultat_un > rencontre.resultat_deux:
+            score2.defaites+=1                    
+        elif rencontre.resultat_un < rencontre.resultat_deux:                
+            score2.victoires+=1 
+        else:                
+            score2.egalites+=1
+        score2.save()
+        
 class ScoreViewSet(viewsets.ModelViewSet):
     queryset=Score.objects.all()
     serializer_class = ScoreSerializer

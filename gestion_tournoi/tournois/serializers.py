@@ -186,47 +186,49 @@ class TournoiSerializer(serializers.ModelSerializer):
                   'sponsor_detail']
 
 
-class RencontreSerializer(serializers.ModelSerializer):
-    joueur1_id = serializers.PrimaryKeyRelatedField(
-        many=False,
-        queryset=Joueur.objects.all(),
-        write_only=True,
-        source='fk_joueur1'
-    )
-    joueur1_detail = serializers.HyperlinkedRelatedField(
-        many=False,
-        read_only=True,
-        view_name='joueur1-detail',
-        source='fk_joueur1'
-    )
-    joueur2_id = serializers.PrimaryKeyRelatedField(
-        many=False,
-        queryset=Joueur.objects.all(),
-        write_only=True,
-        source='fk_joueur2'
-    )
-    joueur2_detail = serializers.HyperlinkedRelatedField(
-        many=False,
-        read_only=True,
-        view_name='joueur2-detail',
-        source='fk_joueur2'
-    )
-    tournoi_id = serializers.PrimaryKeyRelatedField(
-        many=False,
-        queryset=Tournoi.objects.all(),
-        write_only=True,
-        source='fk_tournoi'
-    )
-    tournoi_detail = serializers.HyperlinkedRelatedField(
-        many=False,
-        read_only=True,
-        view_name='tournoi-detail',
-        source='fk_tournoi'
-    )
+class RencontreSerializer(serializers.HyperlinkedModelSerializer):
+    # joueur1_id = serializers.PrimaryKeyRelatedField(
+    #     many=False,
+    #     queryset=Joueur.objects.all(),
+    #     write_only=True,
+    #     source='fk_joueur1'
+    # )
+    # joueur1_detail = serializers.HyperlinkedRelatedField(
+    #     many=False,
+    #     read_only=True,
+    #     view_name='joueur-detail',
+    #     source='fk_joueur1'
+    # )
+    # joueur2_id = serializers.PrimaryKeyRelatedField(
+    #     many=False,
+    #     queryset=Joueur.objects.all(),
+    #     write_only=True,
+    #     source='fk_joueur2'
+    # )
+    # joueur2_detail = serializers.HyperlinkedRelatedField(
+    #     many=False,
+    #     read_only=True,
+    #     view_name='joueur-detail',
+    #     source='fk_joueur2'
+    # )
+    # tournoi_id = serializers.PrimaryKeyRelatedField(
+    #     many=False,
+    #     queryset=Tournoi.objects.all(),
+    #     write_only=True,
+    #     source='fk_tournoi'
+    # )
+    # tournoi_detail = serializers.HyperlinkedRelatedField(
+    #     many=False,
+    #     read_only=True,
+    #     view_name='tournoi-detail',
+    #     source='fk_tournoi'
+    # )
     class Meta:
         model = Rencontre
-        fields = ['url', 'id', 'joueur1_id', 'joueur1_detail', 'resultat_un', 'joueur2_id',
-                  'joueur2_detail', 'resultat_deux', 'tournoi_id', 'tournoi_detail']
+        # fields = ['url', 'id', 'joueur1_id', 'joueur1_detail', 'resultat_un', 
+        #           'joueur2_id', 'joueur2_detail', 'resultat_deux', 
+        #           'date_rencontre', 'status', 'tournoi_id', 'tournoi_detail']
+        fields= '__all__'
         
 
 class ScoreSerializer(serializers.ModelSerializer):

@@ -92,7 +92,7 @@ class TypeSponsor(models.Model):
     nom = models.CharField(max_length=100)
 
     def __str__(self):
-        return f"Type du sponsor : {self.nom}"
+        return f"{self.nom}"
 
 
 class Sponsor(models.Model):
@@ -125,24 +125,27 @@ class Tournoi(models.Model):
     
 
 class Rencontre(models.Model):
-    fk_joueur1 = models.ForeignKey(Joueur, related_name='joueur1', on_delete=models.CASCADE)
+    fk_joueur1 = models.ForeignKey(Joueur, related_name='joueur1', on_delete=models.CASCADE, null='True', blank='True')
     resultat_un = models.IntegerField(null='True', blank='True')
-    fk_joueur2 = models.ForeignKey(Joueur, related_name='joueur2', on_delete=models.CASCADE)
+    fk_joueur2 = models.ForeignKey(Joueur, related_name='joueur2', on_delete=models.CASCADE, null='True', blank='True')
     resultat_deux = models.IntegerField(null='True', blank='True')
-    date_rencontre = models.DateTimeField()
-    
+    date_rencontre = models.DateTimeField(null='True', blank='True')
+    status = models.CharField(null='True', blank='True')
+    #test = models.BooleanField
     fk_tournoi = models.ForeignKey(Tournoi, on_delete=models.CASCADE)
     #related_name='%(class)s_requests_created'
     def __str__(self):
-        return f"Le match entre {self.fk_joueur1.prenom} {self.fk_joueur1.nom}"
-    "contre {self.fk_joueur2.prenom} {self.fk_joueur2.nom}\n"
-    "au tournoi {self.fk_tournoi.nom} au jeu {self.fk_tournoi.fk_jeu.nom}"
+        return f"self.date_rencontre"
+    # def __str__(self):
+    #     return f"Le match entre {self.fk_joueur1.prenom} {self.fk_joueur1.nom}"
+    # "contre {self.fk_joueur2.prenom} {self.fk_joueur2.nom}\n"
+    # "au tournoi {self.fk_tournoi.nom} au jeu {self.fk_tournoi.fk_jeu.nom}"
     
 class Score(models.Model):
-    partie_jouees = models.IntegerField()
-    victoires = models.IntegerField()
-    defaites = models.IntegerField()
-    egalites = models.IntegerField()
+    partie_jouees = models.IntegerField(default=0)
+    victoires = models.IntegerField(default=0)
+    defaites = models.IntegerField(default=0)
+    egalites = models.IntegerField(default=0)
     fk_tournoi = models.ForeignKey(Tournoi, on_delete=models.CASCADE)
     fk_joueur = models.ForeignKey(Joueur, on_delete=models.CASCADE)
 
@@ -153,7 +156,7 @@ class Score(models.Model):
 
 
 class Inscription(models.Model):
-    status = models.CharField(max_length=20)
+    status = models.CharField(max_length=20, null='True', blank='True')
     date_inscription = models.DateField()
     fk_joueur = models.ForeignKey(Joueur, on_delete=models.CASCADE)
     fk_tournoi = models.ForeignKey(Tournoi, on_delete=models.CASCADE)
