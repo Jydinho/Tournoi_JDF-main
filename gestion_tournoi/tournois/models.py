@@ -78,14 +78,18 @@ class Joueur(models.Model):
 
     def __str__(self):
         #print("La liste")
-        return f"""nom : {self.nom}\n
-        prenom : {self.prenom}\n
-        pseudo : {self.pseudo}, email : {self.email}\n
-        telephone : {self.telephone}\n
-        date de naissance {self.date_naissance}\n
-        nationalite : {self.nationalite}\n
-        adresse : {self.fk_adresse}\n
-        jeux : {self.jeux}"""
+        return f"{self.pseudo} {self.prenom} {self.nom} {self.email}"
+
+    # def __str__(self):
+    #     #print("La liste")
+    #     return f"""nom : {self.nom}\n
+    #     prenom : {self.prenom}\n
+    #     pseudo : {self.pseudo}, email : {self.email}\n
+    #     telephone : {self.telephone}\n
+    #     date de naissance {self.date_naissance}\n
+    #     nationalite : {self.nationalite}\n
+    #     adresse : {self.fk_adresse}\n
+    #     jeux : {self.jeux}"""
 
 
 class TypeSponsor(models.Model):
@@ -97,7 +101,7 @@ class TypeSponsor(models.Model):
 
 class Sponsor(models.Model):
     nom = models.CharField(max_length=100)
-    lien = models.CharField(max_length=100)
+    lien = models.CharField(max_length=100, null='True', blank='True')
     contact = models.CharField(max_length=100, blank=True, null=True)
     logo = models.ImageField(upload_to='logos/', null=True, blank=True) # chemin url vers le fichier image settings.py
     fk_type_sponsor = models.ForeignKey(TypeSponsor, on_delete=models.CASCADE)
