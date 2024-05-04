@@ -61,7 +61,7 @@ class Joueur(models.Model):
     # blank=True va permettre de valider si le user ne rentre rien
     # null=True permet de créer la db ave une valeur null
     date_naissance = models.DateField(null=True, blank=True)
-    nationalite = models.CharField(max_length=80)
+    nationalite = models.CharField(max_length=80, null='True', blank='True')
     fk_adresse = models.ForeignKey(Adresse, on_delete=models.CASCADE)
     jeux = models.ManyToManyField(Jeu)
 
