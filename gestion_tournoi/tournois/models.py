@@ -21,17 +21,7 @@ class Jeu(models.Model):
     modes_de_jeux = models.ManyToManyField(ModeDeJeu)    
 
     def __str__(self):
-        return f"nom : {self.nom}"
-
-    # def __str__(self):
-    #     for el in self.genres:
-    #         gn = gn + ' ' + str(el)
-    #     for el in self.modes_de_jeux:
-    #         mdj = mdj + ' ' + str(el)
-        
-    #     return f"""nom : {self.nom}\n
-    #     genres : {gn}\n
-    #     modes de jeux : {mdj}\n"""
+        return f"{self.nom}"
 
 
 class TypeDeTournoi(models.Model):
@@ -73,23 +63,10 @@ class Joueur(models.Model):
     date_naissance = models.DateField(null=True, blank=True)
     nationalite = models.CharField(max_length=80)
     fk_adresse = models.ForeignKey(Adresse, on_delete=models.CASCADE)
-    #jeux = models.ManyToManyField(Jeu, on_delete=models.CASCADE)
     jeux = models.ManyToManyField(Jeu)
 
     def __str__(self):
-        #print("La liste")
         return f"{self.pseudo} {self.prenom} {self.nom} {self.email}"
-
-    # def __str__(self):
-    #     #print("La liste")
-    #     return f"""nom : {self.nom}\n
-    #     prenom : {self.prenom}\n
-    #     pseudo : {self.pseudo}, email : {self.email}\n
-    #     telephone : {self.telephone}\n
-    #     date de naissance {self.date_naissance}\n
-    #     nationalite : {self.nationalite}\n
-    #     adresse : {self.fk_adresse}\n
-    #     jeux : {self.jeux}"""
 
 
 class TypeSponsor(models.Model):
@@ -107,7 +84,7 @@ class Sponsor(models.Model):
     fk_type_sponsor = models.ForeignKey(TypeSponsor, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f"nom du sponsor {self.nom}, le lien {self.lien}"       
+        return f"sponsor {self.nom}, lien {self.lien}"       
 
 class Tournoi(models.Model):
     nom = models.CharField(max_length=100)
@@ -125,25 +102,22 @@ class Tournoi(models.Model):
     sponsors = models.ManyToManyField(Sponsor)
 
     def __str__(self):
-        return f"nom du tournoi : {self.nom}"
+        return f"tournoi : {self.nom}"
     
 
 class Rencontre(models.Model):
     fk_joueur1 = models.ForeignKey(Joueur, related_name='joueur1', on_delete=models.CASCADE, null='True', blank='True')
+    #related_name='%(class)s_requests_created'
     resultat_un = models.IntegerField(null='True', blank='True')
     fk_joueur2 = models.ForeignKey(Joueur, related_name='joueur2', on_delete=models.CASCADE, null='True', blank='True')
     resultat_deux = models.IntegerField(null='True', blank='True')
     date_rencontre = models.DateTimeField(null='True', blank='True')
     status = models.CharField(null='True', blank='True')
-    #test = models.BooleanField
     fk_tournoi = models.ForeignKey(Tournoi, on_delete=models.CASCADE)
-    #related_name='%(class)s_requests_created'
+    
     def __str__(self):
-        return f"self.date_rencontre"
-    # def __str__(self):
-    #     return f"Le match entre {self.fk_joueur1.prenom} {self.fk_joueur1.nom}"
-    # "contre {self.fk_joueur2.prenom} {self.fk_joueur2.nom}\n"
-    # "au tournoi {self.fk_tournoi.nom} au jeu {self.fk_tournoi.fk_jeu.nom}"
+        return f"C'est une rencontre du tournoi {self.fk_tournoi.nom}"
+    
     
 class Score(models.Model):
     partie_jouees = models.IntegerField(default=0)
