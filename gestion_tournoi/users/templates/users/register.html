@@ -1,0 +1,14 @@
+{% extends 'base.html' %} 
+{% block title %} La connexion {% endblock %}
+
+{% block content %}
+
+<form method="POST">
+    {% csrf_token %}
+    {{ form_signup }}
+
+    <button type="submit">Inscription</button>
+
+</form>
+
+{% endblock %}
