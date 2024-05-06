@@ -9,7 +9,13 @@
 
     <div>
         {% for jeu in jeux %}
-        <p>Jeu n° <span class="gras">{{forloop.counter}} {{jeu.nom}}</span></p>         
+            <p>Jeu n° <span class="gras">{{forloop.counter}} => {{jeu.nom}}</span></p>
+            <p>{{jeu.genres.nom}}</p>
+            {% comment %}
+                {% for genre in jeu.genres %}
+                    <p>Genres de jeu ==>> {{genre.nom}}</p>
+                {% endfor %}
+            {% endcomment %}
             <hr>
         {% endfor %}
     </div>

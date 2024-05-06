@@ -10,7 +10,7 @@
     <div>
         {% for genre in genres %}
             
-        <p>Genre n° <span class="gras">{{forloop.counter}} {{genre.nom}}</span></p>
+        <p>Genre n° <span class="gras">{{forloop.counter}} => {{genre.nom}}</span></p>
             {% comment %}<p>Ligne en commentaire</p>
             
                 {% if user.is_authenticated %}
