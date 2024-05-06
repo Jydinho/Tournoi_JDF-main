@@ -6,6 +6,7 @@ def index(request):
     #return redirect('templates/base.html')
     #return redirect('users/login')
     #return redirect('base.html')
-    return redirect('front/joueur_liste')
+    #return redirect('front/joueur_liste')
+    return redirect('genre_liste')
 
     

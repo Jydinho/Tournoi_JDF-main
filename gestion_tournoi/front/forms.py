@@ -17,7 +17,8 @@ class ModeDeJeuCreer(ModelForm):
 class JeuCreer(ModelForm):
     class Meta:
         model = Jeu
-        fields = '__all__'
+        fields = ['id', 'nom', 'genres', 'modes_de_jeux']
+        #fields = '__all__'
 
 class TypeDeTournoiCreer(ModelForm):
     class Meta:

@@ -9,13 +9,21 @@
 
     <div>
         {% for jeu in jeux %}
-            <p>Jeu n° <span class="gras">{{forloop.counter}} => {{jeu.nom}}</span></p>
-            <p>{{jeu.genres.nom}}</p>
-            {% comment %}
-                {% for genre in jeu.genres %}
-                    <p>Genres de jeu ==>> {{genre.nom}}</p>
+        {% comment %}<p>Jeu n° <span class="gras">{{forloop.counter}} => id : {{jeu.id}} - {{jeu.nom}}</span></p>{% endcomment %}
+        <h3>Jeu : {{jeu.nom}}</h3>
+            <p>Genres:</p>
+            <ul>
+                {% for genre in jeu.genres.all %}
+                    <li>{{genre.nom}}</li>
                 {% endfor %}
-            {% endcomment %}
+            </ul>
+            <p>Modes de jeu:</p>
+            <ul>
+                {% for modedejeu in jeu.modes_de_jeux.all %}
+                    <li>{{modedejeu.nom}}</li>
+                {% endfor %}
+            </ul>
+                {% comment %} {% endcomment %}
             <hr>
         {% endfor %}
     </div>

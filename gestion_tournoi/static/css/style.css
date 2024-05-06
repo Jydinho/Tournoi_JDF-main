@@ -6,7 +6,7 @@ body
     background-color: rgb(0, 100, 55);
 }
 
-h1, h2 {
+h1, h2, h3 {
     color: yellowgreen;
 }
 
@@ -49,6 +49,6 @@ label{
     font-weight: bold;
 }
 
-p{
+p, h4, h5, h6, ul, li{
     color: azure;
 }
