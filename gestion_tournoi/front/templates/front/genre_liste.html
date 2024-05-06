@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block title %}Liste de Mac Address{% endblock %}
+{% block title %}Liste des genres de jeux{% endblock %}
 
 {% block content %}
 
@@ -10,7 +10,7 @@
     <div>
         {% for genre in genres %}
             
-        <p>Élément n° <span class="gras">{{forloop.counter}}</span>, genre : <span class="gras">{{genre.nom}}</span></p>
+        <p>Genre n° <span class="gras">{{forloop.counter}} {{genre.nom}}</span></p>
             {% comment %}<p>Ligne en commentaire</p>
             
                 {% if user.is_authenticated %}

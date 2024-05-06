@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %}Liste des modes de jeux{% endblock %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+    <p>User connecté : {{user}}</p>
+{% endif %}
+
+    <div>
+        {% for mode_de_jeu in modes_de_jeux %}
+        <p>Mode de jeu n° <span class="gras">{{forloop.counter}} {{mode_de_jeu.nom}}</span></p>            
+            <hr>
+        {% endfor %}
+    </div>
+
+{% endblock %}

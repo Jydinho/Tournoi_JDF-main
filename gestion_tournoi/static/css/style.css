@@ -6,7 +6,7 @@ body
     background-color: rgb(0, 100, 55);
 }
 
-h1{
+h1, h2 {
     color: yellowgreen;
 }
 

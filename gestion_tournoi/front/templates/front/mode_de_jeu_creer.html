@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block title %}Création de genre de jeu{% endblock %}
+{% block title %}Création du mode de jeu{% endblock %}
 
 {% block content %}
 
@@ -10,7 +10,7 @@
     <div>
         <form method="POST">
             {% csrf_token %}
-            {{ genre }}
+            {{ mode_de_jeu }}
 
             <button type="submit">Créer</button>
         </form>

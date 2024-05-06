@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %}Liste des jeux{% endblock %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+    <p>User connecté : {{user}}</p>
+{% endif %}
+
+    <div>
+        {% for jeu in jeux %}
+        <p>Jeu n° <span class="gras">{{forloop.counter}} {{jeu.nom}}</span></p>         
+            <hr>
+        {% endfor %}
+    </div>
+
+{% endblock %}

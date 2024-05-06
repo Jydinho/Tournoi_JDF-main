@@ -13,14 +13,18 @@
     <body>                        
         <nav>
             <a href="#">Tournois</a>
-            <a href="{% url 'genre_liste' %}">Liste des genres de jeu</a>
+            <a href="{% url 'genre_liste' %}">Liste des genres de jeux | </a>
+            <a href="{% url 'mode_de_jeu_liste' %}"> Liste modes de jeux | </a>
+            <a href="{% url 'jeu_liste' %}"> Liste de jeux | </a>
             {% comment %} {% endcomment %}
             {% if user.is_authenticated %}
-                <a href="{% url 'genre_creer' %}">Créer un genre de jeu</a>
-                <a href="{% url 'log_out' %}">Se déconnecter</a>
+                <a href="{% url 'genre_creer' %}">Créer un genre de jeu | </a>
+                <a href="{% url 'mode_de_jeu_creer' %}"> Créer mode de jeu | </a>
+                <a href="{% url 'jeu_creer' %}"> Créer un jeu | </a>
+                <a href="{% url 'log_out' %}"> Se déconnecter</a>
             {% else %}
-                <a href="{% url 'log_in' %}">Se connecter</a>
-                <a href="{% url 'register' %}">Créer un compte</a>
+                <a href="{% url 'log_in' %}">Se connecter | </a>
+                <a href="{% url 'register' %}"> Créer un compte</a>
             {% endif %}
             
         </nav>
