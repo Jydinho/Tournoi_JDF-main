@@ -10,7 +10,7 @@ def register(request):
         form_signup = RegisterForm(request.POST)
         if form_signup.is_valid():
             form_signup.save()
-            return redirect('tournoi_menu')
+            return redirect('genre_liste')
         
     return render(request, 'users/register.html', {'form_signup' : RegisterForm})
 
@@ -26,12 +26,13 @@ def log_in(request):
                 login(request, utilisateur)
                 # messages.success(request, f"Bienvenu cher utilisateur {username_form}")
 
-            return redirect('tournois/tournois_menu')
+            #return redirect('tournois/tournois_menu')
+            return redirect('genre_liste')
         
     return render(request, 'users/login.html', {'form_connect' : LoginForm})
 
 
 def log_out(request):
     logout(request)
-    return redirect('')
+    return redirect('genre_liste')
 

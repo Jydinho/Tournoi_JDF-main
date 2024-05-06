@@ -10,11 +10,21 @@
         <title>{% block title %} {% endblock %}</title>
     </head>
 
-    <body>
+    <body>                        
         <nav>
             <a href="#">Tournois</a>
+            <a href="{% url 'genre_liste' %}">Liste des genres de jeu</a>
+            {% comment %} {% endcomment %}
+            {% if user.is_authenticated %}
+                <a href="{% url 'genre_creer' %}">Créer un genre de jeu</a>
+                <a href="{% url 'log_out' %}">Se déconnecter</a>
+            {% else %}
+                <a href="{% url 'log_in' %}">Se connecter</a>
+                <a href="{% url 'register' %}">Créer un compte</a>
+            {% endif %}
+            
         </nav>
-
+        <h2>Base Html</h2>    
         {% block content %} {% endblock %}
     </body>
 

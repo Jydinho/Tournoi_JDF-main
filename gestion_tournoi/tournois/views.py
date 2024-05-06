@@ -106,5 +106,3 @@ class ScoreViewSet(viewsets.ModelViewSet):
 class InscriptionViewSet(viewsets.ModelViewSet):
     queryset=Inscription.objects.all()
     serializer_class = InscriptionSerializer
-
-
