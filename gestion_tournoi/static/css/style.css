@@ -4,3 +4,38 @@ body
 {
     background-color: rgb(0, 100, 55);
 }
+
+a:link {
+    color: white;
+    background-color: transparent;
+    text-decoration: none;
+}
+a:visited{
+    color: yellowgreen;
+    background-color: transparent;
+    text-decoration: none;
+}
+a:hover{
+    color: antiquewhite;
+    background-color: transparent;
+    text-decoration: underline;
+}
+a:active{
+    color: yellow;
+    background-color: transparent;
+    text-decoration: underline;
+}
+
+button{
+    background-color:deepskyblue;
+    color: white;
+    border: 1px;
+    text-align: center;
+    text-decoration: solid;
+    font-size: 14px;
+}
+
+label{
+    
+    color: yellow;
+}
